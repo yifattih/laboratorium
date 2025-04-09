@@ -22,23 +22,28 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-			"moby": true,
+			"moby": false,
 			"installDockerBuildx": true,
 			"installDockerComposeSwitch": true,
 			"version": "20.10",
 			"dockerDashComposeVersion": "v2"
 		},
-		"ghcr.io/devcontainers/features/python:1": {
-			"installTools": true,
-			"version": "3.12"
-		},
-		"ghcr.io/mikaello/devcontainer-features/modern-shell-utils:2": {},
-		"ghcr.io/devcontainers-extra/features/pre-commit:2": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers/features/go:1": {
-			"version": "1.23"
-		}
+		
+        "ghcr.io/mikaello/devcontainer-features/modern-shell-utils:2": {}
+        
+        // Other features per use case can be added here. For example:
+        // "ghcr.io/devcontainers-extra/features/pre-commit:2": {
+		// 	"version": "latest"
+		// }
+		
+        // "ghcr.io/devcontainers/features/python:1": {
+		// 	"installTools": true,
+		// 	"version": "3.12"
+		// },
+		
+        // "ghcr.io/devcontainers/features/go:1": {
+		// 	"version": "1.23"
+		// }
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
