@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
-	"name": "Laboratorium",
+	"name": "Laboratorium - Yifattih's Base Devcontainer",
 
 	// Use a base image from github.com/devcontainers/images. More info: https://aka.ms/vscode-remote/devcontainer.json.
     // Use a prebuilt image from mcr.microsoft.com/devcontainers/base. More info: https://aka.ms/vscode-remote/devcontainer.json.
@@ -19,6 +19,9 @@
         "laboratorium"
     ],
 
+    // Set the defualt working directory inside the container. More info: https://aka.ms/vscode-remote/devcontainer.json#workspaceFolder
+    "workspaceFolder": "/workspaces/laboratorium",
+
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
@@ -28,22 +31,22 @@
 			"version": "20.10",
 			"dockerDashComposeVersion": "v2"
 		},
-		
-        "ghcr.io/mikaello/devcontainer-features/modern-shell-utils:2": {}
-        
+
+		"ghcr.io/mikaello/devcontainer-features/modern-shell-utils:2": {}
+
         // Other features per use case can be added here. For example:
-        // "ghcr.io/devcontainers-extra/features/pre-commit:2": {
-		// 	"version": "latest"
-		// }
+		//"ghcr.io/devcontainers/features/python:1": {
+		//	"installTools": true,
+		//	"version": "3.12"
+		//},
 		
-        // "ghcr.io/devcontainers/features/python:1": {
-		// 	"installTools": true,
-		// 	"version": "3.12"
-		// },
+        //"ghcr.io/devcontainers/features/go:1": {
+		//	"version": "1.23"
+		//},
 		
-        // "ghcr.io/devcontainers/features/go:1": {
-		// 	"version": "1.23"
-		// }
+        //"ghcr.io/devcontainers-extra/features/pre-commit:2": {
+		//	"version": "latest"
+		//}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -53,43 +56,55 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+                "docker.docker",
+                "github.copilot",
+                "github.copilot-chat",
+                "github.vscode-github-actions",
+                "github.vscode-pull-request-github",
+                "timonwong.shellcheck",
 				"mhutchie.git-graph",
 				"eamodio.gitlens",
 				"ms-azuretools.vscode-docker",
 				"github.vscode-github-actions",
 				"johnpapa.vscode-peacock",
-				"timonwong.shellcheck"
+                "sanjulaganepola.github-local-actions"
+                // Other project-specific extensions can be added here
 			],
             "settings": {
                 "github.copilot.chat.codeGeneration.instructions": [
                     {
                         "text": "This dev container includes the Docker CLI (`docker`) pre-installed and available on the `PATH` for running and managing containers using the Docker daemon on the host machine."
-                    },
-                    {
-                        "text": "This dev container includes `python3` and `pip3` pre-installed and available on the `PATH`, along with the Python language extensions for Python development."
                     }
                 ],
-                "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
-                "[python]": {
-                    "editor.defaultFormatter": "ms-python.autopep8"
-                },
+                // When installing the python feature, uncomment the following lines to set the default interpreter path.
+                // More info: https://aka.ms/vscode-remote/containers/python
+                // "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+                // "[python]": {
+                //     "editor.defaultFormatter": "ms-python.autopep8"
+                // },
                 "editor.tabSize": 4,
+
                 "terminal.integrated.defaultProfile.linux": "zsh",
+
                 "terminal.integrated.profiles.linux": {
                     "bash": {
                         "path": "bash",
                         "icon": "terminal-bash"
                     },
+
                     "zsh": {
                         "path": "zsh"
                     },
+
                     "fish": {
                         "path": "fish"
                     },
+
                     "tmux": {
                         "path": "tmux",
                         "icon": "terminal-tmux"
                     },
+
                     "pwsh": {
                         "path": "pwsh",
                         "icon": "terminal-powershell"
@@ -98,6 +113,9 @@
             }
 		}
 	}
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "pip install -r requirements.dev.txt && pip install -r requirements.txt"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
